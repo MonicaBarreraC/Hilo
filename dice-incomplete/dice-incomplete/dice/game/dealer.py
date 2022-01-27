@@ -55,6 +55,8 @@ class Dealer:
             self.previous = temp_card.value
             print(f"Let's begin. Your starting score is {self.total_score}")
             print(f"Your first card is {self.previous}")
+        else:
+            print(f"\nThe card is {self.current.value}")
         
         self.hi_lo = input("Higher or lower? [h/l] ").lower()
         #self.is_playing = (self.hi_lo == "h")
@@ -79,6 +81,7 @@ class Dealer:
         # Add to the total score (100, -75, 0)
 
         self.current.pick()
+        print(f"Next card was {self.current.value}")
         
         if self.hi_lo == 'h' and self.current.value > self.previous:
             self.total_score += 100
@@ -103,7 +106,6 @@ class Dealer:
             self.is_playing = False
             print(f"You lose. Your score is {self.total_score}")
         
-        print(f"You drew {self.current.value}")
         print(f"Your score is: {self.total_score}")
         keep_playing = input("Draw again? [y/n] ")
         self.is_playing = (keep_playing == "y")
