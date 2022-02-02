@@ -26,7 +26,7 @@ class Dealer:
         self.previous = 0
         self.current = Card()
         self.hi_lo = ""
-        self.total_score = 100
+        self.total_score = 300
         self.first_turn = True
 
 
