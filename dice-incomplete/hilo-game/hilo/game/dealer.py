@@ -1,5 +1,11 @@
 from game.card import Card
 
+CGLT = '\x1b[6;30;42m'
+CRED = '\033[91m'
+CGRN = '\033[92m'
+CYEL = '\033[93m'
+CBLU = '\033[94m'
+CEND = '\033[0m'
 
 class Dealer:
     """A person who directs the game. 
@@ -43,6 +49,8 @@ class Dealer:
             self.do_updates()
             self.do_outputs()
 
+        print("\nThanks for playing!\n")
+
 
 #Lewis ->
     def get_inputs(self):
@@ -56,10 +64,10 @@ class Dealer:
             temp_card = Card()
             temp_card.pick()
             self.previous = temp_card.value
-            print(f"Let's begin. Your starting score is {self.total_score}")
-            print(f"Your first card is {self.previous}")
+            print(f"\nLet's begin. Your starting score is {CGRN}{self.total_score} {CEND}")
+            print(f"\nYour first card is {CBLU}{self.previous}{CEND}")
         else:
-            print(f"\nThe card is {self.current.value}")
+            print(f"\nThe card is {CBLU}{self.current.value}{CEND}")
         
         self.hi_lo = input("Higher or lower? [h/l] ").lower()
         #self.is_playing = (self.hi_lo == "h")
@@ -85,7 +93,7 @@ class Dealer:
         # Add to the total score (100, -75, 0)
 
         self.current.pick()
-        print(f"Next card was {self.current.value}")
+        print(f"Next card was {CBLU}{self.current.value}{CEND}")
         
         if self.hi_lo == 'h' and self.current.value > self.previous:
             self.total_score += 100
@@ -108,7 +116,7 @@ class Dealer:
         """
         if self.total_score <= 0:
             self.is_playing = False
-            print(f"You lose. Your score is {self.total_score}")
+            print(f"You lose. Your score is {CRED}{self.total_score}{CEND}")
         
         else:
             print(f"Your score is: {self.total_score}")
