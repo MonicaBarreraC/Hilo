@@ -26,7 +26,7 @@ class Dealer:
         self.previous = 0
         self.current = Card()
         self.hi_lo = ""
-        self.total_score = 300
+        self.total_score = 100
         self.first_turn = True
 
 
@@ -110,6 +110,7 @@ class Dealer:
             self.is_playing = False
             print(f"You lose. Your score is {self.total_score}")
         
-        print(f"Your score is: {self.total_score}")
-        keep_playing = input("Draw again? [y/n] ")
-        self.is_playing = (keep_playing == "y")
+        else:
+            print(f"Your score is: {self.total_score}")
+            keep_playing = input("Draw again? [y/n] ")
+            self.is_playing = (keep_playing == "y")
